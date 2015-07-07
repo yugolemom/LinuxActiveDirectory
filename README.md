@@ -87,34 +87,22 @@ Este serviço fara a integração entre cliente e servidor.
 
 Crie um novo arquivo em /etc/realmd.conf com os seguintes paramentros:
 
+```sh
 [users]
-
 default-home = /home/%D/%U
-
 default-shell = /bin/bash
-
 [active-directory]
-
 default-client = sssd
-
 os-name = Ubuntu Desktop Linux
-
 os-version = 14.04
-
 [service]
-
 automatic-install = no
-
 [ifto.local]
-
 fully-qualified-names = no
-
 automatic-id-mapping = yes
-
 user-principal = yes
-
 manage-system = no
-
+```
 
 ###Adicionando maquina ao Dominio
 

@@ -24,6 +24,7 @@ $ ping dc001.ifto.local
 $ ping dc002.ifto.local
 $ ping palmas.ifto.local
 ```
+
 ### PACOTES NECESSÁRIOS PARA A INSTALAÇÃO  DA AUTENTICAÇÃO
 
 ```bash

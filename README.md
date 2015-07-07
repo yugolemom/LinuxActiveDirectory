@@ -88,18 +88,31 @@ Este serviço fara a integração entre cliente e servidor.
 Crie um novo arquivo em /etc/realmd.conf com os seguintes paramentros:
 
 [users]
+
 default-home = /home/%D/%U
+
 default-shell = /bin/bash
+
 [active-directory]
+
 default-client = sssd
+
 os-name = Ubuntu Desktop Linux
+
 os-version = 14.04
+
 [service]
+
 automatic-install = no
+
 [ifto.local]
+
 fully-qualified-names = no
+
 automatic-id-mapping = yes
+
 user-principal = yes
+
 manage-system = no
 
 
@@ -112,7 +125,6 @@ $ sudo kinit administrator@IFTO.LOCAL
 ```
 
 **Digite sua senha e pronto.**
-
 
 * 2º Comando para adicionar a maquina no AD.
 
@@ -139,6 +151,7 @@ $ sudo realm permit --all
 **Obs:** O realmd configura em partes o sssd mais existe um problema com arquivo vamos corrigir isso agora.
 
 Alterando a linha dentro do arquivo **/etc/sssd/sssd.conf**:
+
 ```sh
 access_provider = simple
 ```
@@ -201,7 +214,7 @@ Edite o arquivo **/etc/sudoers**
 Adicione esta linha:
 
 ```sh
-%%g_admins_ad ALL=(ALL) ALL
+%g_admins_ad ALL=(ALL) ALL
 ```
 
 ** PRONTO REINICE O COMPUTADOR E TENTE EFETUAR O LOGIN **

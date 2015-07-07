@@ -35,7 +35,7 @@ Nesta etapa o cliente Kerberos ira solicitar algumas informações:
 IFTO.LOCAL
 ```
 
-![krb5-user-config](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/01)
+![krb5-user-config](/figuras/01)
 
 
 **SERVIDORES DC**
@@ -45,7 +45,7 @@ IFTO.LOCAL
 ```sh
 DC001.IFTO.LOCAL DC002.IFTO.LOCAL PALMAS.IFTO.LOCAL
 ```
-![krb5-user-config](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/02)
+![krb5-user-config](/figuras/02)
 
 
 **POR ULTIMO O SERVIDOR PRINCIPAL DO DOMINIO O QUAL POSSUI O CONTROLE DAS CHAVES**
@@ -54,7 +54,7 @@ DC001.IFTO.LOCAL DC002.IFTO.LOCAL PALMAS.IFTO.LOCAL
 DC001.IFTO.LOCAL
 ```
 
-![krb5-user-config](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/03)
+![krb5-user-config](/figuras/03)
 
 
 
@@ -64,7 +64,7 @@ locais.
 
 Faça alterações no arquivo **/etc/ntp.conf** conforme a figura abaixo:
 
-![NTP CONFIG](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/04)
+![NTP CONFIG](figuras/04)
 
 ```sh
 server dc001.ifto.local
@@ -126,7 +126,7 @@ $ sudo realm --verbose join ifto.local -U administrador
 $ sudo realm list
 
 ```
-![NTP CONFIG](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/06)
+![NTP CONFIG](figuras/06)
 
 * 4º Permitir que qualquer usuário do dominio faça login do computador:
 
@@ -170,7 +170,7 @@ reconnection_retries = 3
 
 Ficando desta forma o arquivo:
 
-![SSSD CONFIG](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/07)
+![SSSD CONFIG](figuras/07)
 
 
 **Caso você efetue as alterações da opção Extra do 5º passo reinicie o serviço.**
@@ -192,7 +192,7 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 Ficando desta forma:
 
-![NTP CONFIG](https://git.ifto.edu.br/yugolemom/LinuxActiveDirectory/raw/master/figuras/05)
+![NTP CONFIG](figuras/05)
 
 * 7º Adicionar permissões para grupos específicos possam por exemplo instalar programas via sudo.
 

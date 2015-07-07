@@ -79,7 +79,7 @@ server palmas.ifto.local
 $ sudo service ntp restart
 ```
 
-###Configurar o Realmd - (Cliente Kerberos)
+### Configurar o Realmd - (Cliente Kerberos)
 
 Este serviço fara a integração entre cliente e servidor.
 
@@ -104,7 +104,7 @@ user-principal = yes
 manage-system = no
 ```
 
-###Adicionando maquina ao Dominio
+### Adicionando maquina ao Dominio
 
 * 1º Ativar o ticket do Kerberos:
 

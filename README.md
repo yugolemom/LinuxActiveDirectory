@@ -1,7 +1,6 @@
 ### Adicionando Máquinas Linux ao Domínio - Active Directory 2012.
 
 O avahi utiliza os domínios .local e ponto .foo como reservados apenas para serviços da maquina local, ou seja dentro do próprio computador, então para burlamos esta questão teremos que modificar o arquivo **/etc/nsswitch.conf**.
-
 Esta linha deverá ser modificada:
 
 ```sh
@@ -24,11 +23,10 @@ $ ping dc001.ifto.local
 $ ping dc002.ifto.local
 $ ping palmas.ifto.local
 ```
-
 ### PACOTES NECESSÁRIOS PARA A INSTALAÇÃO  DA AUTENTICAÇÃO
 
 ```bash
-$ sudo apt-get -y install realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp
+$ sudo apt-get -y install realmd sssd sssd-tools samba-common krb5-user packagekit samba-common-bin samba-libs adcli ntp libpam-sss libnss-sss
 ```
 Nesta etapa o cliente Kerberos ira solicitar algumas informações:
 
@@ -36,7 +34,15 @@ Nesta etapa o cliente Kerberos ira solicitar algumas informações:
 IFTO.LOCAL
 ```
 
-![krb5-user-config](/figuras/01)
+obs: Nas ultimas versões do Linux, observei que ele esta pulando etapas na configuração do kerberos então use o comando:
+
+```bash
+$ sudo dpkg-reconfigure krb5-config
+```
+
+Assim as configurações seram pedidas novamente e basta continuar de acordo com as etapas a seguir.
+
+![krb5-user-config](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/01)
 
 
 **SERVIDORES DC**
@@ -46,7 +52,7 @@ IFTO.LOCAL
 ```sh
 DC001.IFTO.LOCAL DC002.IFTO.LOCAL PALMAS.IFTO.LOCAL
 ```
-![krb5-user-config](/figuras/02)
+![krb5-user-config](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/02)
 
 
 **POR ULTIMO O SERVIDOR PRINCIPAL DO DOMINIO O QUAL POSSUI O CONTROLE DAS CHAVES**
@@ -55,7 +61,7 @@ DC001.IFTO.LOCAL DC002.IFTO.LOCAL PALMAS.IFTO.LOCAL
 DC001.IFTO.LOCAL
 ```
 
-![krb5-user-config](/figuras/03)
+![krb5-user-config](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/03)
 
 
 
@@ -65,7 +71,7 @@ locais.
 
 Faça alterações no arquivo **/etc/ntp.conf** conforme a figura abaixo:
 
-![NTP CONFIG](figuras/04)
+![NTP CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/04)
 
 ```sh
 server dc001.ifto.local
@@ -115,6 +121,7 @@ $ sudo kinit administrator@IFTO.LOCAL
 
 **Digite sua senha e pronto.**
 
+
 * 2º Comando para adicionar a maquina no AD.
 
 ```bash
@@ -127,7 +134,7 @@ $ sudo realm --verbose join ifto.local -U administrador
 $ sudo realm list
 
 ```
-![NTP CONFIG](figuras/06)
+![NTP CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/06)
 
 * 4º Permitir que qualquer usuário do dominio faça login do computador:
 
@@ -140,7 +147,6 @@ $ sudo realm permit --all
 **Obs:** O realmd configura em partes o sssd mais existe um problema com arquivo vamos corrigir isso agora.
 
 Alterando a linha dentro do arquivo **/etc/sssd/sssd.conf**:
-
 ```sh
 access_provider = simple
 ```
@@ -172,7 +178,7 @@ reconnection_retries = 3
 
 Ficando desta forma o arquivo:
 
-![SSSD CONFIG](figuras/07)
+![SSSD CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/07)
 
 
 **Caso você efetue as alterações da opção Extra do 5º passo reinicie o serviço.**
@@ -194,7 +200,7 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 Ficando desta forma:
 
-![NTP CONFIG](figuras/05)
+![NTP CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/05)
 
 * 7º Adicionar permissões para grupos específicos possam por exemplo instalar programas via sudo.
 

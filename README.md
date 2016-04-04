@@ -42,7 +42,7 @@ $ sudo dpkg-reconfigure krb5-config
 
 Assim as configurações seram pedidas novamente e basta continuar de acordo com as etapas a seguir.
 
-![krb5-user-config](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/01)
+![krb5-user-config](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/01)
 
 
 **SERVIDORES DC**
@@ -52,7 +52,7 @@ Assim as configurações seram pedidas novamente e basta continuar de acordo com
 ```sh
 DC001.IFTO.LOCAL DC002.IFTO.LOCAL PALMAS.IFTO.LOCAL
 ```
-![krb5-user-config](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/02)
+![krb5-user-config](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/02)
 
 
 **POR ULTIMO O SERVIDOR PRINCIPAL DO DOMINIO O QUAL POSSUI O CONTROLE DAS CHAVES**
@@ -61,7 +61,7 @@ DC001.IFTO.LOCAL DC002.IFTO.LOCAL PALMAS.IFTO.LOCAL
 DC001.IFTO.LOCAL
 ```
 
-![krb5-user-config](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/03)
+![krb5-user-config](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/03)
 
 
 
@@ -71,7 +71,7 @@ locais.
 
 Faça alterações no arquivo **/etc/ntp.conf** conforme a figura abaixo:
 
-![NTP CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/04)
+![NTP CONFIG](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/04)
 
 ```sh
 server dc001.ifto.local
@@ -134,7 +134,7 @@ $ sudo realm --verbose join ifto.local -U administrador
 $ sudo realm list
 
 ```
-![NTP CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/06)
+![NTP CONFIG](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/06)
 
 * 4º Permitir que qualquer usuário do dominio faça login do computador:
 
@@ -178,7 +178,7 @@ reconnection_retries = 3
 
 Ficando desta forma o arquivo:
 
-![SSSD CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/07)
+![SSSD CONFIG](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/07)
 
 
 **Caso você efetue as alterações da opção Extra do 5º passo reinicie o serviço.**
@@ -200,7 +200,7 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ```
 Ficando desta forma:
 
-![NTP CONFIG](https://git.ifto.edu.br/hugo.lima/LinuxActiveDirectory/raw/master/figuras/05)
+![NTP CONFIG](https://github.com/yugolemom/LinuxActiveDirectory/blob/master/figuras/05)
 
 * 7º Adicionar permissões para grupos específicos possam por exemplo instalar programas via sudo.
 
@@ -233,7 +233,7 @@ Dúvidas e Sugestões
 
 CONTATO: HUGO CAVALCANTE LIMA
 
-EMAIL: hugo@ifto.edu.br
+EMAIL: hugo@ifto.edu.br, yugolemom@gmail.com
 
 
 Abraços  :-)
